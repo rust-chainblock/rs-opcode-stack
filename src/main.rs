@@ -1,12 +1,12 @@
-use crate::stack::{ StackI32, StackItem };
+use crate::stack::{Stack, StackItem};
 
+mod opcodes;
 mod stack;
 fn main() {
-
-    let mut stack : StackI32 = StackI32::new();
-    stack.push(StackItem::Unknown("<calldata_message>".to_owned()));
-    stack.push(StackItem::Num(100));
-    stack.pop();
+    let mut stack: Stack = Stack::new();
+    stack.push(StackItem::Unknown(String::from("CDM")));
+    stack.push(StackItem::Known(100));
+    stack.add().unwrap();
 
     println!("{:?}", stack);
 }
